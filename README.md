@@ -2,11 +2,13 @@
 A container for running python, R, and rpy2.
 
 ## Commands
-### Start Container
-`npm start`
 
 ### Build/Re-build Container
 `npm run build`
+
+### Start Container
+`npm start`
+
 
 ## Usage
 ### Your First Startup
