@@ -17,8 +17,19 @@ with localconverter(ro.default_converter + pandas2ri.converter):
 
 threePL = mirt.mirt(r_exam_responses, 1, itemtype = '3PL', guess = 0.20)
 
-print((r.coef(threePL, IRTpars=True, simplify=True).rx2('items')))
+#Item Parameters 
+#a,b,c,whatever u is
+itemArray = np.asarray(r.coef(threePL, IRTpars=True, simplify=True).rx2('items'))
+np.savetxt("itemData.csv", itemArray, delimiter=",")
+print("Wrote out itemData.csv")
+# print(itemArray)
 
+
+#Person Parameters
+#Theta , Standard Error
 params = {'full.scores.SE': True}
-print(mirt.fscores(threePL, **params))
+personArray = np.asarray(mirt.fscores(threePL, **params))
+np.savetxt("personData.csv", personArray, delimiter=",")
+print("Wrote out personData.csv")
+#print(personArray)
 
